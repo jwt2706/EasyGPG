@@ -25,7 +25,7 @@ pub fn check_input_type(file_path: &Path) {
     }
 }
 
-pub fn encrypt() {
+pub fn main() {
     println!("Let's encrypt!");
     // 1. Prompt user to input
     let user_input: String = Input::new()

@@ -29,7 +29,7 @@ pub fn check_input_type(file_path: &Path) {
     }
 }
 
-pub fn decrypt() {
+pub fn main() {
     println!("Let's decrypt!");
 
     let user_input: String = Input::new()

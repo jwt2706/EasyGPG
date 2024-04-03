@@ -2,16 +2,15 @@ use std::env;
 use dialoguer::{Select, theme::ColorfulTheme};
 use crossterm::cursor::Show;
 use crossterm::ExecutableCommand;
-use walkdir::WalkDir;
 use std::io::stdout;
-use std::fs;
 
 pub mod encrypt;
 pub mod decrypt;
+pub mod keys;
 
 fn main() {
     ascii();
-    print!("v{}", env!("CARGO_PKG_VERSION"));
+    println!("v{}", env!("CARGO_PKG_VERSION"));
     let args: Vec<String> = env::args().collect();
     let _ = stdout().execute(Show);
 
@@ -37,15 +36,15 @@ fn ascii(){
 
 fn handle_args(arg: &str) {
     match arg {
-        "-e" => encrypt::encrypt(),
-        "-d" => decrypt::decrypt(),
-        "-s" => scan(),
+        "-e" => encrypt::main(),
+        "-d" => decrypt::main(),
+        "-s" => keys::list(),
         _ => println!("Invalid argument. Please use -e for encryption or -d for decryption."),
     }
 }
 
 fn display_menu() {
-    let selections = &["Encrypt", "Decrypt", "Scan system for keys"];
+    let selections = &["Encrypt", "Decrypt", "View keys"];
     let selection = Select::with_theme(&ColorfulTheme::default())
         .with_prompt("Please choose your operation. Select with space key and confirm with space.")
         .default(0)
@@ -54,26 +53,9 @@ fn display_menu() {
         .unwrap();
 
     match selection {
-        0 => encrypt::encrypt(),
-        1 => decrypt::decrypt(),
-        2 => scan(),
+        0 => encrypt::main(),
+        1 => decrypt::main(),
+        2 => keys::list(),
         _ => unreachable!(),
     }
-}
-
-fn scan() {
-    // placeholder path
-    let root_dir = "/";
-
-    let key_files: Vec<String> = WalkDir::new(root_dir)
-        .into_iter()
-        .filter_map(Result::ok)
-        .filter(|e| e.file_type().is_file() && e.file_name().to_string_lossy().ends_with(".key"))
-        .map(|e| e.into_path().to_string_lossy().into_owned())
-        .collect();
-
-    // save the paths to the key files for later use
-    // placeholder path
-    let save_path = "/path/to/save/file";
-    fs::write(save_path, key_files.join("\n")).unwrap();
 }
