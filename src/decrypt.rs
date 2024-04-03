@@ -3,42 +3,46 @@ use std::path::Path;
 use std::ffi::OsStr;
 use std::fs;
 
+pub fn decrypt_gpg(file_path: &Path) {
+    println!("Decrypted .gpg file at path: {:?}", file_path);
+    // TODO: add .gpg decryption code here
+}
+
+pub fn decrypt_txt(file_path: &Path) {
+    println!("Decrypted .txt file content: {}", content);
+    // TODO: add .txt decryption code here
+}
+
+pub fn decrypt_plain_text(encrypted_text: &str) {
+    println!("Plain text: {}", encrypted_text);
+    // TODO: add plain text decryption code here
+}
+
+pub fn check_input_type(file_path: &Path) {
+    if file_path.exists() {
+        match file_path.extension().and_then(OsStr::to_str) {
+            Some("gpg") => decrypt_gpg(file_path),
+            Some("txt") => decrypt_txt(file_path),
+            _ => (),
+        }
+    } else {
+        decrypt_plain_text(file_path.to_str().unwrap());
+    }
+}
+
 pub fn decrypt() {
     println!("Decryption mode selected");
 
-let user_input: String = Input::new()
-    .with_prompt("Please paste the message, or file path")
-    .interact()
-    .unwrap();
+    let user_input: String = Input::new()
+        .with_prompt("Please paste the message, or file path/name")
+        .interact()
+        .unwrap();
 
-    // determine if the input is a path to a file or the encrypted message itself
-    let mut encrypted_message: String = String::new();
-    if Path::new(&user_input).exists() {
-        println!("Input is a file path");
-
-        // if the input is a path to a file, read the file
-        let file_path = Path::new(&user_input);
-        let extension = file_path.extension().and_then(OsStr::to_str);
-        match extension {
-            Some("txt") => {
-                encrypted_message = fs::read_to_string(file_path).unwrap();
-                println!("File content: {}", encrypted_message); // Print the file content
-            },
-            Some("gpg") => {
-                // if the file is a .gpg file, you need to decrypt it first
-                // TODO: add .gpg decryption code here or call another func or smth
-                println!("File is a .gpg file");
-            },
-            _ => {
-                println!("Unsupported file type or file not actually encrypted.");
-                return;
-            }
-        }
+    let file_path = Path::new(&user_input);
+    if file_path.exists() {
+        check_input_type(&file_path);
     } else {
         // if the input is not a path to a file, assume it's the encrypted message
-        encrypted_message = user_input;
-        println!("Input is an encrypted message.");
+        decrypt_plain_text(&user_input);
     }
-
-    // todo: once we know what we're dealing with, then we got to find the correct key in the user's keyring
 }
