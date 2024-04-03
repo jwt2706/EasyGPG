@@ -24,7 +24,7 @@ pub fn list() {
     }
 }
 
-pub fn selection() {
+pub fn select() -> String {
     let public_keys = Command::new("gpg")
         .arg("--list-keys")
         .output()
@@ -47,5 +47,5 @@ pub fn selection() {
         .interact()
         .unwrap();
 
-    println!("You selected: {}", keys[selection]);
+    keys[selection].clone()
 }

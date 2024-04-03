@@ -1,20 +1,16 @@
 use dialoguer::Input;
 use std::path::Path;
 
-fn encrypt_file(file_path: &str) {
+use crate::keys::select;
+
+pub fn encrypt_file(file_path: &str) {
     // TODO: Implement file encryption
     println!("Encrypting file: {}", file_path);
 }
 
-fn encrypt_text(text: &str) {
+pub fn encrypt_text(text: &str) {
     // TODO: Implement text encryption
     println!("Encrypting text: {}", text);
-}
-
-fn choose_key() -> String {
-    // TODO: Implement key choosing
-    println!("Choosing key...");
-    String::from("dummy_key")
 }
 
 pub fn check_input_type(file_path: &Path) {
@@ -27,7 +23,7 @@ pub fn check_input_type(file_path: &Path) {
 
 pub fn main() {
     println!("Let's encrypt!");
-    // 1. Prompt user to input
+    // prompt user to input
     let user_input: String = Input::new()
         .with_prompt("Please paste your message, or file path/name")
         .interact()
@@ -37,7 +33,8 @@ pub fn main() {
     check_input_type(&file_path);
 
     // TODO: next we list the current public keys available for us to sign for. And prompt the user to choose, using an options menu
-    let key = choose_key();
+    let key = select();
+    println!("Selected key: {}", key);
 
     // TODO: encrypt the file or message using that key
 

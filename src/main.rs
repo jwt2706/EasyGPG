@@ -39,6 +39,9 @@ fn handle_args(arg: &str) {
         "-e" => encrypt::main(),
         "-d" => decrypt::main(),
         "-s" => keys::list(),
+        "--help" | "-h" => {
+            println!("Usage: \n-e for encryption \n-d for decryption");
+        },
         _ => println!("Invalid argument. Please use -e for encryption or -d for decryption."),
     }
 }
