@@ -1,6 +1,8 @@
 # EasyGPG
 
-todo
+I made this because I find the GPG commands annoying to write, and I wanted to make something cooler than aliases.
+
+## Todo
 
 - finish
 - add tests
@@ -8,3 +10,7 @@ todo
 - make package and release
 - add man page or smth
 - add --help thing
+
+## Info on GPG
+
+https://gnupg.org/
