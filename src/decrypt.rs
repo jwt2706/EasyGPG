@@ -1,7 +1,6 @@
 use dialoguer::Input;
 use std::path::Path;
 use std::ffi::OsStr;
-use std::fs;
 
 pub fn decrypt_gpg(file_path: &Path) {
     println!("Decrypted .gpg file at path: {:?}", file_path);
@@ -9,7 +8,7 @@ pub fn decrypt_gpg(file_path: &Path) {
 }
 
 pub fn decrypt_txt(file_path: &Path) {
-    println!("Decrypted .txt file content: {}", content);
+    println!("Decrypted .txt file content: {}", file_path.display());
     // TODO: add .txt decryption code here
 }
 
@@ -31,7 +30,7 @@ pub fn check_input_type(file_path: &Path) {
 }
 
 pub fn decrypt() {
-    println!("Decryption mode selected");
+    println!("Let's decrypt!");
 
     let user_input: String = Input::new()
         .with_prompt("Please paste the message, or file path/name")
@@ -39,10 +38,5 @@ pub fn decrypt() {
         .unwrap();
 
     let file_path = Path::new(&user_input);
-    if file_path.exists() {
-        check_input_type(&file_path);
-    } else {
-        // if the input is not a path to a file, assume it's the encrypted message
-        decrypt_plain_text(&user_input);
-    }
+    check_input_type(&file_path);
 }
