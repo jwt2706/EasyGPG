@@ -47,5 +47,11 @@ pub fn select() -> String {
         .interact()
         .unwrap();
 
-    keys[selection].clone()
+    // extract the email address from the selected key
+    let selected_key = keys[selection].clone();
+    let email_start = selected_key.find('<').unwrap_or(0) + 1;
+    let email_end = selected_key.find('>').unwrap_or(selected_key.len());
+    let email = &selected_key[email_start..email_end];
+
+    email.to_string()
 }
