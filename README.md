@@ -5,10 +5,6 @@ I made this because I find the GPG commands annoying to write, and I wanted to m
 ## Dependencies
 
 - gpg
-- libxcb-shape0
-- libxcb-xfixes0
-
-the last two might already be installed
 
 ## Todo
 
