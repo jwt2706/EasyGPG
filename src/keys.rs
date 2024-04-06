@@ -1,5 +1,6 @@
 use dialoguer::{Select, theme::ColorfulTheme};
 use std::process::Command;
+use colored::*;
 
 pub fn list() {
     // list all public keys
@@ -25,6 +26,8 @@ pub fn list() {
 }
 
 pub fn select() -> String {
+    println!("{}", "\nSelect a key:".green());
+
     let public_keys = Command::new("gpg")
         .arg("--list-keys")
         .output()
@@ -52,6 +55,8 @@ pub fn select() -> String {
     let email_start = selected_key.find('<').unwrap_or(0) + 1;
     let email_end = selected_key.find('>').unwrap_or(selected_key.len());
     let email = &selected_key[email_start..email_end];
+
+    println!("Encrypting for '{}':\n", email);
 
     email.to_string()
 }

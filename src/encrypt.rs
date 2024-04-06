@@ -1,7 +1,7 @@
 use dialoguer::Input;
 use std::path::Path;
 use std::process::Command;
-use std::fs::write;
+use colored::*;
 
 use crate::keys::select;
 
@@ -37,14 +37,22 @@ pub fn main() {
         .interact()
         .unwrap();
 
-    let input_type = if Path::new(&user_input).exists() { "file" } else { "text" };
+    let input_type = if Path::new(&user_input).exists() {
+        "file"
+    } else {
+        if Path::new(&user_input).extension().is_some() {
+            println!("{}", "File not found! Defaulting to encrypting input as text.".red());
+        }
+        "text"
+    };
+
     let key = select();
-
-    println!("Selected key: {}", key);
-
     let encrypted_output = encrypt(&user_input, &key, &input_type);
 
     if input_type == "text" {
-        write("msg.txt", &encrypted_output).expect("Failed to write to file");
+        let content = String::from_utf8(encrypted_output).expect("Failed to convert to string");
+        println!("{}", content.yellow());
+    } else {
+        println!("{}", format!("The file '{}' was encrypted successfully.", user_input).green());
     }
 }
