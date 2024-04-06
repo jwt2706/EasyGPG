@@ -1,20 +1,32 @@
 use dialoguer::Input;
 use std::path::Path;
 use std::ffi::OsStr;
+use std::process::Command;
+use std::fs;
 
 pub fn decrypt_gpg(file_path: &Path) {
-    println!("Decrypted .gpg file at path: {:?}", file_path);
-    // TODO: add .gpg decryption code here
+    let output_file = file_path.with_extension("");
+    let output = Command::new("gpg")
+        .args(&["--output", output_file.to_str().unwrap(), "--decrypt", file_path.to_str().unwrap()])
+        .output()
+        .expect("Failed to execute gpg command");
+
+    if output.status.success() {
+        println!("Decrypted .gpg file at path: {:?}", output_file);
+    } else {
+        eprintln!("Decryption failed: {}", String::from_utf8_lossy(&output.stderr));
+    }
 }
 
 pub fn decrypt_txt(file_path: &Path) {
-    println!("Decrypted .txt file content: {}", file_path.display());
-    // TODO: add .txt decryption code here
+    let content = fs::read_to_string(file_path)
+        .expect("Could not read file!");
+    println!("Decrypted .txt file content: {}", content);
 }
 
 pub fn decrypt_plain_text(encrypted_text: &str) {
+    // Assuming the plain text is not actually encrypted
     println!("Plain text: {}", encrypted_text);
-    // TODO: add plain text decryption code here
 }
 
 pub fn check_input_type(file_path: &Path) {
