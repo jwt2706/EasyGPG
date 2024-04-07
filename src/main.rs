@@ -39,11 +39,18 @@ fn handle_args(arg: &str) {
         "-e" => encrypt::main(),
         "-d" => decrypt::main(),
         "-s" => keys::list(),
-        "--help" | "-h" => {
-            println!("Usage: \n-e for encryption \n-d for decryption");
-        },
-        _ => println!("Invalid argument. Please use -e for encryption or -d for decryption."),
+        "--help" | "-h" => print_help(),
+        _ => println!("Invalid argument. See --help for correct usage."),
     }
+}
+
+fn print_help() {
+    println!("EasyGPG - Simplify GPG cryptography of files or text");
+    println!("Usage: easygpg [-e] [-d] [-s] [--help] [-h]");
+    println!("-e: Triggers the encryption process.");
+    println!("-d: Triggers the decryption process.");
+    println!("-s: Lists the your current public keys available.");
+    println!("--help or -h: Displays this help message.");
 }
 
 fn display_menu() {
