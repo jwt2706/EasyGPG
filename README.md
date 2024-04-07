@@ -1,9 +1,13 @@
 # EasyGPG
 
-ALMOST DONE. I'll make a release soon.
+The project is almost done. I'll make a release soon.
 
-EasyGPG is a command line tool to help simplify the process of encrypting and decrypting files or plains text with GPG.
-<br>I made this because I always forget the GPG commands when I need them.. so now I don't have to remeber them at all :)
+EasyGPG is a command line tool to help simplify the process of encrypting and decrypting with GPG.
+
+## Why
+
+I kept forgetting the GPG commands and got fed up with looking them up all the time.. Now I'm free to forget :D
+<br />I guess I could have just made an alias, but that's not as fun.
 
 ## Usage
 
