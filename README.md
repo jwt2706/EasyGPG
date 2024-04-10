@@ -42,7 +42,6 @@ Windows: Download from [here](https://gpg4win.org/download.html).
 
 ## Todo
 
-- finish decryption
-- finish readme docs
-- add tests
+- finish decryption of plain ascii inputs
 - make package and release v0.1
+- installation docs
