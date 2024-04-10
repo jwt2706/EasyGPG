@@ -37,6 +37,7 @@ pub fn main() {
         .interact()
         .unwrap();
 
+    // check if the input is just plain text or a file path
     let input_type = if Path::new(&user_input).exists() {
         "file"
     } else {
