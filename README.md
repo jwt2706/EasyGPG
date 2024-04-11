@@ -31,15 +31,15 @@ To install EasyGPG using the provided shell installer, follow these steps:
 #### Linux and macOS
 
 1. Download the installer script from the [installer folder](https://github.com/jwt2706/EasyGPG/tree/v0.1.0/installer).
-2. Make the installer executable: `chmod +x installer.sh`.
-3. Run the installer: `./installer.sh`.
+2. Make the installer executable: `chmod +x install.sh`.
+3. Run the installer: `./install.sh`.
 
 #### Windows
 
 1. Download and install [Git for Windows](https://gitforwindows.org/).
 2. Download the installer from the [installer folder](https://github.com/jwt2706/EasyGPG/tree/v0.1.0/installer).
 3. Open Git Bash and navigate to the directory where you downloaded the installer.
-4. Run the installer: `bash installer.sh`.
+4. Run the installer: `bash install.sh`.
 
 For uninstalling, just run the `uninstall.sh` shell script.
 
