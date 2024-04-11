@@ -57,17 +57,11 @@ Windows: Download from [here](https://gpg4win.org/download.html).
 
 ### 2. Install EasyGPG
 
-#### Linux
+#### Linux and macOS
 
 1. Download the latest EasyGPG release from the [releases page](https://github.com/jwt2706/easygpg/releases).
 2. Make the binary executable: `chmod +x easygpg`
 3. Move the binary to a directory in your PATH, e.g., `/usr/local/bin`: `sudo mv easygpg /usr/local/bin/`
-
-#### macOS
-
-1. Download the latest EasyGPG release from the [releases page](https://github.com/jwt2706/easygpg/releases).
-2. Make the binary executable: `chmod +x easygpg`
-3. Move the binary to a directory in your PATH, e.g., `/usr/local/bin`: `mv easygpg /usr/local/bin/`
 
 #### Windows
 
@@ -76,7 +70,8 @@ Windows: Download from [here](https://gpg4win.org/download.html).
 3. Move the `easygpg.exe` file to a directory in your PATH. You can add a directory to your PATH by following [these instructions](https://www.architectryan.com/2018/03/17/add-to-the-path-on-windows-10/).
 
 <br />
-<b>Disclaimer:</b> I did not get to test the installation process on all operating systems. If you are running into an problem, you can open an [issue](https://github.com/jwt2706/EasyGPG/issues).
+<b>Disclaimer:</b>
+I did not get to test the installation process on all operating systems. If you are running into an problem, you can open an issue <a href="https://github.com/jwt2706/EasyGPG/issues">here</a>.
 
 ## Todo
 
