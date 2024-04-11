@@ -1,4 +1,9 @@
-# EasyGPG
+<p align="center">
+    <img src="logo.png" alt="logo" width="200">
+    <h1 align="center">EasyGPG</h1>
+</p>
+
+[![Build](https://github.com/jwt2706/EasyGPG/actions/workflows/build.yml/badge.svg?branch=main)](https://github.com/jwt2706/EasyGPG/actions/workflows/build.yml)
 
 EasyGPG is a command line tool to help simplify the process of encrypting and decrypting with GPG.
 
