@@ -71,7 +71,7 @@ Windows: Download from [here](https://gpg4win.org/download.html).
 
 <br />
 <b>Disclaimer:</b>
-I did not get to test the installation process on all operating systems. If you are running into an problem, you can open an issue <a href="https://github.com/jwt2706/EasyGPG/issues">here</a>.
+I did not get to test the installation process on all operating systems. If you are running into problems, you can open an issue <a href="https://github.com/jwt2706/EasyGPG/issues">here</a>.
 
 ## Todo
 
